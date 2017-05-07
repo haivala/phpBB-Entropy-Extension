@@ -4,7 +4,7 @@
 	"description": "Entropy Extension for phpbb 3.2.x",
 	"homepage": "entropy.fi",
 	"version": "1.0",
-	"time": "2017-04-20",
+	"time": "2017-05-07",
 	"keywords": ["phpbb", "extension", "entropy", "mattermost", "slack"],
 	"license": "GPL-2.0",
 	"authors": [

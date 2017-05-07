@@ -4,8 +4,8 @@ phpBB 3.2 Extension to message new posts to Mattermost/Slack channel with incomi
 
 # Install
 
-1. Clone to phpBB/ext/TheH/entropy
+1. Clone to [phpBBroot]/ext/TheH/entropy
 2. Activate
-3. Set incoming hook, botname, botimg and optionally channel
+3. Set incoming hook, botname, botimg and optionally channel in ACP
 
 
