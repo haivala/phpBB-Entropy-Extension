@@ -66,17 +66,26 @@ class main_listener implements EventSubscriberInterface
      */
     public function insert_posting($event)
     {
+        // Dont do anything if we dont have the webhook
+        if ($this->config['entropy_webhook'] ==''){
+            return;
+        }
+        // post notification only if mode is something else than edit or there is a reason for the edit
         if($event["mode"]!='edit' || $event['data']["post_edit_reason"]!=''){
-            $botname = $this->config['entropy_botnick'];
-            $botimg = $this->config['entropy_botimg'];
-            $botchannel = $this->config['entropy_botchannel'];
+            $user = $this->user->data['username'];
             $board_url = generate_board_url() . '/';
             $reason ='';
             $mention ='';
+            $channel ='';
+            $botname = $this->config['entropy_botnick'];
+            if ($botname == ''){
+                $botname = 'ForumBot';
+            }
+            if ($this->config['entropy_botchannel']){
+                $channel = '"channel":"'.$this->config['entropy_botchannel'].'",';
+            }
+            $botimg = $this->config['entropy_botimg'];
 
-            $user = $this->user->data['username'];
-            $forum = '<'.$board_url.'viewforum.php?f='.$event["data"]["forum_id"].'|'.$event["data"]["forum_name"].'>';
-            $post = '<'.$board_url.'viewtopic.php?f='.$event["data"]["forum_id"].'&t='.$event["data"]["topic_id"].'#p'.$event["data"]["post_id"].'|'.$event["data"]["topic_title"].'> by `'.$user.'`';
             $posttext = $event['data']['message'];
             $found = preg_match_all("/@\w+/", $posttext, $matches);
             if($found){
@@ -89,9 +98,8 @@ class main_listener implements EventSubscriberInterface
             if ($event['data']["post_edit_reason"]){
                 $reason .= ', because:'. $event['data']["post_edit_reason"];
             }
-            if ($this->config['entropy_botchannel']){
-                $channel = '"channel":"'.$this->config['entropy_botchannel'].'",';
-            }
+            $forum = '<'.$board_url.'viewforum.php?f='.$event["data"]["forum_id"].'|'.$event["data"]["forum_name"].'>';
+            $post = '<'.$board_url.'viewtopic.php?f='.$event["data"]["forum_id"].'&t='.$event["data"]["topic_id"].'#p'.$event["data"]["post_id"].'|'.$event["data"]["topic_title"].'> by `'.$user.'`';
             $payload = '{"username":"'.$botname.'",'.$channel.'"icon_url":"'.$botimg.'",
                 "text":"'.strtoupper($event["mode"]).': **Forum**: '.$forum.' **Post**: '.$post.''.$reason.''.$mention.'"}';
             $this->sendmessage($payload);
