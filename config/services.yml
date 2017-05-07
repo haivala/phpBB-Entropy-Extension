@@ -1,0 +1,10 @@
+services:
+    theh.entropy.main.listener:
+        class: TheH\entropy\event\main_listener
+        arguments:
+            - '@config'
+            - '@user'
+            - '@template'
+        tags:
+            - { name: event.listener }
+

@@ -1,0 +1,58 @@
+<!-- INCLUDE overall_header.html -->
+
+	<a name="maincontent"></a>
+	<h1>{L_ENTROPY_CONTROL}</h1>
+	<p>{L_ENTROPY_EXPLAIN}</p>
+
+	<form id="acp_entropy" method="post" action="{U_ACTION}">
+		<fieldset>
+			<legend>{L_ENTROPY_CONTROL}</legend>
+			<dl>
+				<dt>
+					<label>{L_ENTROPY_WEBHOOK}</label><br />
+					<span>{L_ENTROPY_WEBHOOK_EXPLAIN}</span>
+				</dt>
+                <dd><input type="text" name="entropy[entropy_webhook]" id="entropy_webhook" size="50" maxlength="200" value="{ENTROPY_WEBHOOK}" />&nbsp;<span>{L_ENTROPY_WEBHOOK}</span></dd>
+			</dl>
+			<dl>
+				<dt>
+					<label>{L_ENTROPY_BOTNICK}</label><br />
+					<span>{L_ENTROPY_BOTNICK_EXPLAIN}</span>
+				</dt>
+                <dd><input type="text" name="entropy[entropy_botnick]" id="entropy_botnick" size="10" maxlength="50" value="{ENTROPY_BOTNICK}" />&nbsp;<span>{L_ENTROPY_BOTNICK}</span></dd>
+			</dl>
+			<dl>
+				<dt>
+					<label>{L_ENTROPY_BOTIMGURL}</label><br />
+					<span>{L_ENTROPY_BOTIMGURL_EXPLAIN}</span>
+				</dt>
+                <dd><input type="text" name="entropy[entropy_botimg]" id="entropy_botimg" size="50" maxlength="200" value="{ENTROPY_BOTIMG}" />&nbsp;<span>{L_ENTROPY_BOTIMGURL}</span></dd>
+			</dl>
+			<dl>
+				<dt>
+					<label>{L_ENTROPY_BOT_CHANNEL}</label><br />
+					<span>{L_ENTROPY_BOT_CHANNEL_EXPLAIN}</span>
+				</dt>
+                <dd><input type="text" name="entropy[entropy_botchannel]" id="entropy_botchannel" size="10" maxlength="50" value="{ENTROPY_BOTCHANNEL}" />&nbsp;<span>{L_ENTROPY_BOT_CHANNEL}</span></dd>
+			</dl>
+			</fieldset>
+
+			<fieldset>
+			<dl>
+				<dt>
+					<label>{L_SHOW_VAT}</label><br />
+					<span>{L_SHOW_VAT_EXPLAIN}</span>
+				</dt>
+				<dd>
+					<label><input type="radio" id="show_vat" name="entropy[entropy_vat]" value="1"<!-- IF SHOW_VAT --> checked<!-- ENDIF -->>{L_YES}</label>
+                    <label><input type="radio" id="show_vat" name="entropy[entropy_vat]" value="0"<!-- IF !SHOW_VAT --> checked<!-- ENDIF -->>{L_NO}</label>
+				</dd>
+			</dl>
+			</fieldset>
+            
+			<p class="submit-buttons">
+			<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+			<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+			
+	</form>
+<!-- INCLUDE overall_footer.html -->

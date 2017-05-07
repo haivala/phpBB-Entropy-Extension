@@ -1,0 +1,27 @@
+{
+	"name": "TheH/entropy",
+	"type": "phpbb-extension",
+	"description": "Entropy Extension for phpbb 3.2.x",
+	"homepage": "entropy.fi",
+	"version": "1.0",
+	"time": "2017-04-20",
+	"keywords": ["phpbb", "extension", "entropy", "mattermost", "slack"],
+	"license": "GPL-2.0",
+	"authors": [
+		{
+			"name": "TheH",
+			"homepage": "entropy.fi",
+			"email": "webmaster@entropy.fi",
+			"role": "Extension Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.3"
+	},
+	"extra": {
+		"display-name": "Entropy Extension",
+		"soft-require": {
+			"phpbb/phpbb": "3.2.*"
+		}
+	}
+}
