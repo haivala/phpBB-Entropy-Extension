@@ -99,7 +99,7 @@ class main_listener implements EventSubscriberInterface
                 $reason .= ', because:'. $event['data']["post_edit_reason"];
             }
             $forum = '<'.$board_url.'viewforum.php?f='.$event["data"]["forum_id"].'|'.$event["data"]["forum_name"].'>';
-            $post = '<'.$board_url.'viewtopic.php?f='.$event["data"]["forum_id"].'&t='.$event["data"]["topic_id"].'#p'.$event["data"]["post_id"].'|'.$event["data"]["topic_title"].'> by `'.$user.'`';
+            $post = '<'.$board_url.'viewtopic.php?f='.$event["data"]["forum_id"].'&t='.$event["data"]["topic_id"].'&p='.$event["data"]["post_id"].'#p'.$event["data"]["post_id"].'|'.$event["data"]["topic_title"].'> by `'.$user.'`';
             $payload = '{"username":"'.$botname.'",'.$channel.'"icon_url":"'.$botimg.'",
                 "text":"'.strtoupper($event["mode"]).': **Forum**: '.$forum.' **Post**: '.$post.''.$reason.''.$mention.'"}';
             $this->sendmessage($payload);
