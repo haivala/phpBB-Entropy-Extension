@@ -87,7 +87,7 @@ class main_listener implements EventSubscriberInterface
             $botimg = $this->config['entropy_botimg'];
 
             $posttext = $event['data']['message'];
-            $found = preg_match_all("/@\w+/", $posttext, $matches);
+            $found = preg_match_all("/ @\w+/", $posttext, $matches);
             if($found){
                 $mention = ", mentioned:";
                 foreach ($matches[0] as $match) {
