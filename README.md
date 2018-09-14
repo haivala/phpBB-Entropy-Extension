@@ -2,7 +2,7 @@
 
 phpBB 3.2 Extension to message new posts to Mattermost/Slack/Discord channel with incoming hooks. Optionally adds new "View Active Topics"-link before main breadcrumb navigation
 
-# Pequirements
+# Requirements
 php-curl extension
 
 # Install
