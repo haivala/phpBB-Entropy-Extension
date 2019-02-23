@@ -127,7 +127,7 @@ class main_listener implements EventSubscriberInterface
     }
 
     private function make_bold($text){
-        if (strpos($this->config['entropy_webhook'], 'slack') !== false){
+        if (strpos($this->config['entropy_webhook'], 'slack.com') !== false){
             // Slack uses single * for bold
             return '*'.$text.'*';
         }else{
