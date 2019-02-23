@@ -100,10 +100,12 @@ class main_listener implements EventSubscriberInterface
             }
             $forum = '<'.$board_url.'viewforum.php?f='.$event["data"]["forum_id"].'|'.$event["data"]["forum_name"].'>';
             $post = '<'.$board_url.'viewtopic.php?f='.$event["data"]["forum_id"].'&t='.$event["data"]["topic_id"].'&p='.$event["data"]["post_id"].'#p'.$event["data"]["post_id"].'|'.$event["data"]["topic_title"].'> by `'.$user.'`';
+            $forum_heading = $this->make_bold('Forum');
+            $post_heading = $this->make_bold('Post');
             $payload = '{"username":"'.$botname.'",'.$channel.'"icon_url":"'.$botimg.'",
-                "text":"'.strtoupper($event["mode"]).': **Forum**: '.$forum.' **Post**: '.$post.''.$reason.''.$mention.'"}';
+                "text":"'.strtoupper($event["mode"]).': '.$forum_heading.': '.$forum.' '.$post_heading.': '.$post.''.$reason.''.$mention.'"}';
             $this->sendmessage($payload);
-        }   
+        }
     }
 
     /**
@@ -122,5 +124,14 @@ class main_listener implements EventSubscriberInterface
         $rc = curl_setopt ($curl, CURLOPT_POSTFIELDS, http_build_query (array ('payload' => $payload)));
         $rc = curl_exec ($curl);
         curl_close ($curl);
+    }
+
+    private function make_bold($text){
+        if (strpos($this->config['entropy_webhook'], 'slack') !== false){
+            // Slack uses single * for bold
+            return '*'.$text.'*';
+        }else{
+            return '**'.$text.'**';
+        }
     }
 }
