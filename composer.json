@@ -3,7 +3,7 @@
 	"type": "phpbb-extension",
 	"description": "Entropy Extension for phpbb 3.2.x/3.3.x",
 	"homepage": "entropy.fi",
-	"version": "1.0",
+	"version": "1.1",
 	"time": "2017-05-07",
 	"keywords": ["phpbb", "extension", "entropy", "mattermost", "slack", "discord"],
 	"license": "GPL-2.0",
