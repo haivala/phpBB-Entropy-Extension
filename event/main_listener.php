@@ -117,12 +117,12 @@ class main_listener implements EventSubscriberInterface
         $cOptArr = array (
             CURLOPT_URL => $xcURL,
             CURLOPT_TIMEOUT => 10,
-            CURLOPT_RETURNTRANSFER => 0,
+            CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_POST => 1
         );
-        $rc = curl_setopt_array ($curl, $cOptArr);
-        $rc = curl_setopt ($curl, CURLOPT_POSTFIELDS, http_build_query (array ('payload' => $payload)));
-        $rc = curl_exec ($curl);
+        curl_setopt_array($curl, $cOptArr);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query (array ('payload' => $payload)));
+        $omitted_result = curl_exec($curl);
         curl_close ($curl);
     }
 
