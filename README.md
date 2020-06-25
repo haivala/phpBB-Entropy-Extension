@@ -1,6 +1,6 @@
 # Entropy-Extension
 
-phpBB 3.2 Extension to message new posts to Mattermost/Slack/Discord channel with incoming hooks. Optionally adds new "View Active Topics"-link before main breadcrumb navigation
+phpBB 3.2/3.3 Extension to message new posts to Mattermost/Slack/Discord channel with incoming hooks. Optionally adds new "View Active Topics"-link before main breadcrumb navigation
 
 # Requirements
 php-curl extension
