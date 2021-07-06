@@ -10,22 +10,20 @@
 *
 */
 
-if (!defined('IN_PHPBB'))
-{
-	exit;
+if (!defined('IN_PHPBB')) {
+    exit;
 }
-if (empty($lang) || !is_array($lang))
-{
-	$lang = array();
+if (empty($lang) || !is_array($lang)) {
+    $lang = array();
 }
 
 $lang = array_merge($lang, array(
-	'ENTROPY_CONTROL'	=> 'Entropy',
-	'ENTROPY_EXPLAIN'	=> 'From here you can change some entropy extension settings',
-	'ENTROPY_WEBHOOK'	=> 'Incoming webkook url',
-	'ENTROPY_WEBHOOK_EXPLAIN'	=> 'Url for the Mattermost/Slack incoming hook',
-	'ENTROPY_BOTNICK'	=> 'Bot nick',
-	'ENTROPY_BOTNICK_EXPLAIN'	=> 'The bot nick used in Mattermost/Slack',
+    'ENTROPY_CONTROL'	=> 'Entropy',
+    'ENTROPY_EXPLAIN'	=> 'From here you can change some entropy extension settings',
+    'ENTROPY_WEBHOOK'	=> 'Incoming webhook url',
+    'ENTROPY_WEBHOOK_EXPLAIN'	=> 'Url for the Mattermost/Slack incoming hook',
+    'ENTROPY_BOTNICK'	=> 'Bot nick',
+    'ENTROPY_BOTNICK_EXPLAIN'	=> 'The bot nick used in Mattermost/Slack',
     'ENTROPY_BOTIMGURL'	=> 'Url to bot img',
     'ENTROPY_BOTIMGURL_EXPLAIN' => 'The bot avatar image used in Mattermost/Slack',
     'ENTROPY_BOT_CHANNEL'	=> 'The bot channel',
@@ -33,7 +31,7 @@ $lang = array_merge($lang, array(
     'SHOW_VAT' => 'Show View Active Topics link',
     'SHOW_VAT_EXPLAIN' => 'Adds View Active Topics link before main breadcrumb navigation',
     'ACP_CAT_ENTROPY'   => 'Entropy',
-	'ACP_ENTROPY_GRP'	=> 'Settings',
-	'ACP_ENTROPY'	=> 'Settings',
-	'CONFIRM_MESSAGE'	=> 'Changes saved!<br><br><a href="%1$s">Back</а>',
+    'ACP_ENTROPY_GRP'	=> 'Settings',
+    'ACP_ENTROPY'	=> 'Settings',
+    'CONFIRM_MESSAGE'	=> 'Changes saved!<br><br><a href="%1$s">Back</а>',
 ));
