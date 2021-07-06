@@ -3,13 +3,13 @@
 	"type": "phpbb-extension",
 	"description": "Entropy Extension for phpbb 3.2.x/3.3.x",
 	"homepage": "entropy.fi",
-	"version": "1.1.1",
+	"version": "1.2.0",
 	"time": "2021-07-06",
 	"keywords": ["phpbb", "extension", "entropy", "mattermost", "slack", "discord"],
 	"license": "GPL-2.0",
 	"authors": [
 		{
-			"name": "TheH",
+			"name": "Entropy",
 			"homepage": "entropy.fi",
 			"email": "webmaster@entropy.fi",
 			"role": "Extension Developer"

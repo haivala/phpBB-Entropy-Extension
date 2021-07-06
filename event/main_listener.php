@@ -2,12 +2,13 @@
 /**
  *
  * @package phpBB Extension - Entropy
- * @copyright (c) 2017 TheH - http://entopy.fi
+ * @copyright (c) 2017 haivala - http://entopy.fi
  * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
  *
  */
 
-namespace TheH\entropy\event;
+namespace haivala\entropy\event;
+
 use phpbb\controller\helper;
 use phpbb\request\request_interface;
 use phpbb\user;
@@ -16,7 +17,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class main_listener implements EventSubscriberInterface
 {
-
     /** @var config */
     protected $config;
     /** @var user */
@@ -31,7 +31,7 @@ class main_listener implements EventSubscriberInterface
      * @param \phpbb\template\template $template Template object
      *
      */
-    public function __construct(\phpbb\config\config $config,\phpbb\user $user, \phpbb\template\template $template)
+    public function __construct(\phpbb\config\config $config, \phpbb\user $user, \phpbb\template\template $template)
     {
         $this->config       = $config;
         $this->user         = $user;
@@ -41,7 +41,7 @@ class main_listener implements EventSubscriberInterface
     /**
      * @return array
      */
-    static public function getSubscribedEvents()
+    public static function getSubscribedEvents()
     {
         return array(
             'core.submit_post_end'    => 'insert_posting',
@@ -67,35 +67,35 @@ class main_listener implements EventSubscriberInterface
     public function insert_posting($event)
     {
         // Dont do anything if we dont have the webhook
-        if ($this->config['entropy_webhook'] ==''){
+        if ($this->config['entropy_webhook'] =='') {
             return;
         }
         // post notification only if mode is something else than edit or there is a reason for the edit
-        if($event["mode"]!='edit' || $event['data']["post_edit_reason"]!=''){
+        if ($event["mode"]!='edit' || $event['data']["post_edit_reason"]!='') {
             $user = $this->user->data['username'];
             $board_url = generate_board_url() . '/';
             $reason ='';
             $mention ='';
             $channel ='';
             $botname = $this->config['entropy_botnick'];
-            if ($botname == ''){
+            if ($botname == '') {
                 $botname = 'ForumBot';
             }
-            if ($this->config['entropy_botchannel']){
+            if ($this->config['entropy_botchannel']) {
                 $channel = '"channel":"'.$this->config['entropy_botchannel'].'",';
             }
             $botimg = $this->config['entropy_botimg'];
 
             $posttext = $event['data']['message'];
             $found = preg_match_all("/ @\w+/", $posttext, $matches);
-            if($found){
+            if ($found) {
                 $mention = ", mentioned:";
                 foreach ($matches[0] as $match) {
                     $mention .= ' '.$match;
                 }
                 $mention.='.';
             }
-            if ($event['data']["post_edit_reason"]){
+            if ($event['data']["post_edit_reason"]) {
                 $reason .= ', because:'. $event['data']["post_edit_reason"];
             }
             $forum = '<'.$board_url.'viewforum.php?f='.$event["data"]["forum_id"].'|'.$event["data"]["forum_name"].'>';
@@ -111,26 +111,28 @@ class main_listener implements EventSubscriberInterface
     /**
      * @param Message $payload
      */
-    public function sendmessage($payload){
+    public function sendmessage($payload)
+    {
         $xcURL = $this->config['entropy_webhook'];
         $curl = curl_init($xcURL);
-        $cOptArr = array (
+        $cOptArr = array(
             CURLOPT_URL => $xcURL,
             CURLOPT_TIMEOUT => 10,
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_POST => 1
         );
         curl_setopt_array($curl, $cOptArr);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query (array ('payload' => $payload)));
+        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query(array('payload' => $payload)));
         $omitted_result = curl_exec($curl);
-        curl_close ($curl);
+        curl_close($curl);
     }
 
-    private function make_bold($text){
-        if (strpos($this->config['entropy_webhook'], 'slack.com') !== false){
+    private function make_bold($text)
+    {
+        if (strpos($this->config['entropy_webhook'], 'slack.com') !== false) {
             // Slack uses single * for bold
             return '*'.$text.'*';
-        }else{
+        } else {
             return '**'.$text.'**';
         }
     }

@@ -7,7 +7,7 @@
 *
 */
 
-namespace TheH\entropy\acp;
+namespace haivala\entropy\acp;
 
 /**
 * @package module_install
@@ -15,18 +15,18 @@ namespace TheH\entropy\acp;
 
 class acp_entropy_info
 {
-	function module()
-	{
-		return array(
-			'filename'	=> '\TheH\entropy\acp\acp_entropy_module',
-			'title'		=> 'ACP_ENTROPY', // define in the lang/xx/acp/common.php language file
-			'modes'		=> array(
-				'main'		=> array(
-					'title'		=> 'ACP_ENTROPY',
-					'auth' 		=> 'ext_TheH/entropy && acl_a_user',
-					'cat'		=> array('ACP_ENTROPY_GRP')
-				),
-			),
-		);
-	}
+    public function module()
+    {
+        return array(
+            'filename'	=> '\haivala\entropy\acp\acp_entropy_module',
+            'title'		=> 'ACP_ENTROPY', // define in the lang/xx/acp/common.php language file
+            'modes'		=> array(
+                'main'		=> array(
+                    'title'		=> 'ACP_ENTROPY',
+                    'auth' 		=> 'ext_haivala/entropy && acl_a_user',
+                    'cat'		=> array('ACP_ENTROPY_GRP')
+                ),
+            ),
+        );
+    }
 }

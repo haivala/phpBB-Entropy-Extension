@@ -1,6 +1,6 @@
 services:
-    theh.entropy.main.listener:
-        class: TheH\entropy\event\main_listener
+    haivala.entropy.main.listener:
+        class: haivala\entropy\event\main_listener
         arguments:
             - '@config'
             - '@user'
