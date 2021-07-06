@@ -6,7 +6,7 @@
 	"version": "1.2.0",
 	"time": "2021-07-06",
 	"keywords": ["phpbb", "extension", "entropy", "mattermost", "slack", "discord"],
-	"license": "GPL-2.0",
+	"license": "GPL-2.0-only",
 	"authors": [
 		{
 			"name": "Entropy",
