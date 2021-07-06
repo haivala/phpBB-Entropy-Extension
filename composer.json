@@ -19,7 +19,7 @@
 		"php": ">=7"
 	},
 	"extra": {
-		"display-name": "Entropy Extension - Mattermost/Slack/Discord notfitactions about forum posts.",
+		"display-name": "Entropy Extension",
 		"soft-require": {
 			"phpbb/phpbb": "3.2.* | 3.3.*"
 		}
